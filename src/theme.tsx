@@ -8,7 +8,6 @@ import {
 
 declare module '@mui/material/styles' {
   interface Palette {
-    searchButton: Palette['primary'];
     searchBarAndList: {
       ListText: string;
       ListBorderLeft: string;
@@ -17,10 +16,19 @@ declare module '@mui/material/styles' {
       SearchIcon: string;
       ListBorder: string;
       ListBorderAtHover: string;
+      searchButton: string;
+    };
+    BasicMenu: {
+      backGround: string;
+    };
+    toggleMenu: {
+      border: string;
+    };
+    mainBackground: {
+      primary: string;
     };
   }
   interface PaletteOptions {
-    searchButton?: PaletteOptions['primary'];
     searchBarAndList?: {
       ListText: string;
       ListBorderLeft: string;
@@ -29,6 +37,16 @@ declare module '@mui/material/styles' {
       SearchIcon: string;
       ListBorder: string;
       ListBorderAtHover: string;
+      searchButton: string;
+    };
+    BasicMenu: {
+      backGround: string;
+    };
+    toggleMenu: {
+      border: string;
+    };
+    mainBackground: {
+      primary: string;
     };
   }
 }
@@ -39,9 +57,6 @@ export const getDesignTokens = (mode: PaletteMode): ThemeOptions => ({
     ...(mode === 'light'
       ? {
           // palette values for light mode
-          searchButton: {
-            main: '#1F2937',
-          },
           searchBarAndList: {
             ListText: '#4b566b',
             ListBorderLeft: '#dedede',
@@ -50,13 +65,20 @@ export const getDesignTokens = (mode: PaletteMode): ThemeOptions => ({
             SearchIcon: '#7d879c',
             ListBorderAtHover: '#2B3445',
             ListBorder: '#cacaca',
+            searchButton: ' #1F2937',
+          },
+          BasicMenu: {
+            backGround: '#F6F9FC',
+          },
+          toggleMenu: {
+            border: '#0000001f', //
+          },
+          mainBackground: {
+            primary: '#F6F9FC',
           },
         }
       : {
           // palette values for dark mode
-          searchButton: {
-            main: '#777',
-          },
           searchBarAndList: {
             ListText: '#fff',
             ListBorderLeft: '#616060',
@@ -65,6 +87,16 @@ export const getDesignTokens = (mode: PaletteMode): ThemeOptions => ({
             SearchIcon: '#7d879c',
             ListBorder: '#5a5959',
             ListBorderAtHover: '#fff',
+            searchButton: '#777',
+          },
+          BasicMenu: {
+            backGround: '#252b32',
+          },
+          toggleMenu: {
+            border: '#ffffff1f',
+          },
+          mainBackground: {
+            primary: '#252b32',
           },
         }),
   },
