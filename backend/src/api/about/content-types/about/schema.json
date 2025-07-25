@@ -1,0 +1,51 @@
+{
+  "kind": "collectionType",
+  "collectionName": "abouts",
+  "info": {
+    "singularName": "about",
+    "pluralName": "abouts",
+    "displayName": "product",
+    "description": "Write about yourself and the content you create"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "productTitle": {
+      "type": "string",
+      "required": true
+    },
+    "productDescription": {
+      "type": "text",
+      "required": true
+    },
+    "productRatting": {
+      "type": "decimal",
+      "required": true
+    },
+    "productPrice": {
+      "type": "decimal",
+      "required": true
+    },
+    "productCategory": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "men",
+        "woman"
+      ]
+    },
+    "productImage": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

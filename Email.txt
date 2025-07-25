@@ -1,0 +1,3 @@
+userName = firstecom@gmail.com
+Password = P@ssw0rd
+//http://localhost:1337/api/abouts?populate=*
