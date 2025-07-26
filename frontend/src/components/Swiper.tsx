@@ -12,8 +12,14 @@ import { Pagination } from 'swiper/modules';
 import { Box, Button, Stack, Typography, useTheme } from '@mui/material';
 
 const mySlider = [
-  { text: 'MEN', link: '../../public/images/banner-15.jpg' },
-  { text: 'WOMEN', link: '../../public/images/banner-25.jpg' },
+  {
+    text: 'MEN',
+    link: 'https://snqefyrsepicqljivmym.supabase.co/storage/v1/object/public/product-images//Swiper(1).jpg',
+  },
+  {
+    text: 'WOMEN',
+    link: 'https://snqefyrsepicqljivmym.supabase.co/storage/v1/object/public/product-images//Swiper(2).jpg',
+  },
 ];
 
 export default function SwiperBar() {

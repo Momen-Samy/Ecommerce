@@ -154,7 +154,11 @@ export default function Hero() {
                 flexBasis: '50%',
               }}
             >
-              <img src="public\Images\banner-17.jpg" alt="" width={'100%'} />
+              <img
+                src="https://snqefyrsepicqljivmym.supabase.co/storage/v1/object/public/product-images//Banner(1).jpg"
+                alt=""
+                width={'100%'}
+              />
               <Caption
                 title={'NEW ARRIVALS'}
                 body={'SUMMER SALE 20% OFF'}
@@ -169,7 +173,10 @@ export default function Hero() {
                 display: 'flex',
               }}
             >
-              <img src="public\Images\banner-16.jpg" alt="" />
+              <img
+                src="https://snqefyrsepicqljivmym.supabase.co/storage/v1/object/public/product-images//Banner(2).jpg"
+                alt=""
+              />
               <Caption
                 title={'GAMING 4K'}
                 body={'DESKTOPS & LAPTOPS'}
