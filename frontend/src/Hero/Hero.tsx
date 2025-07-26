@@ -4,16 +4,23 @@ import ElectricBoltIcon from '@mui/icons-material/ElectricBolt';
 import CreditScoreOutlinedIcon from '@mui/icons-material/CreditScoreOutlined';
 import WorkspacePremiumOutlinedIcon from '@mui/icons-material/WorkspacePremiumOutlined';
 import AccessAlarmOutlinedIcon from '@mui/icons-material/AccessAlarmOutlined';
-
+import type { Theme, SxProps } from '@mui/material';
 import SwiperBar from '../components/Swiper';
+
 export default function Hero() {
   interface CaptionProps {
     title: string;
     body: string;
     link: string;
+    sx?: {
+      TitleTypography?: SxProps<Theme>;
+      BodyTypography?: SxProps<Theme>;
+      Link?: SxProps<Theme>;
+    };
   }
 
-  const Caption = ({ title, body, link }: CaptionProps) => {
+  const Caption = ({ title, body, link, sx = {} }: CaptionProps) => {
+    const { TitleTypography, BodyTypography, Link: linkSx } = sx;
     return (
       <Box
         sx={{
@@ -27,6 +34,9 @@ export default function Hero() {
           variant="body2"
           sx={{
             color: '#2B3445',
+            ...(typeof TitleTypography === 'function'
+              ? TitleTypography(theme)
+              : TitleTypography),
           }}
         >
           {title}
@@ -36,6 +46,9 @@ export default function Hero() {
           sx={{
             color: '#2B3445',
             lineHeight: 1.5,
+            ...(typeof BodyTypography === 'function'
+              ? BodyTypography(theme)
+              : BodyTypography),
           }}
         >
           {body}
@@ -53,6 +66,7 @@ export default function Hero() {
             '&:hover': {
               color: '#D23F57',
             },
+            ...(typeof linkSx === 'function' ? linkSx(theme) : linkSx),
           }}
         >
           {link}
@@ -138,8 +152,9 @@ export default function Hero() {
         }}
       >
         <Box sx={{ pt: 2, mt: 2.5, display: 'flex', gap: 2 }}>
+          {/*  */}
           <SwiperBar />
-
+          {/*  */}
           <Box
             sx={{
               display: { xs: 'none', md: 'flex' },
@@ -160,8 +175,8 @@ export default function Hero() {
                 width={'100%'}
               />
               <Caption
-                title={'NEW ARRIVALS'}
-                body={'SUMMER SALE 20% OFF'}
+                title={'GAMING 4K'}
+                body={'DESKTOPS & LAPTOPS'}
                 link={'shop now'}
               />
             </Box>
@@ -178,8 +193,8 @@ export default function Hero() {
                 alt=""
               />
               <Caption
-                title={'GAMING 4K'}
-                body={'DESKTOPS & LAPTOPS'}
+                title={'NEW ARRIVALS'}
+                body={'SUMMER SALE 20% OFF'}
                 link={'shop now'}
               />
             </Box>
