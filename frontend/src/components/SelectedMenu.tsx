@@ -39,7 +39,7 @@ export default function SelectedMenu({ options, sx = {} }: ListPropsType) {
   };
 
   const handleMenuItemClick = (
-    event: React.MouseEvent<HTMLElement>,
+    // event: React.MouseEvent<HTMLElement>,
     index: number
   ) => {
     setSelectedIndex(index);
@@ -112,7 +112,7 @@ export default function SelectedMenu({ options, sx = {} }: ListPropsType) {
           <MenuItem
             key={option}
             selected={index === selectedIndex}
-            onClick={event => handleMenuItemClick(event, index)}
+            onClick={() => handleMenuItemClick(index)}
             sx={{
               fontSize: '11px',
               p: '3px 10px',

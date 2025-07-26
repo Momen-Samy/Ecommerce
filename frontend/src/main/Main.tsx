@@ -73,11 +73,8 @@ export default function Main() {
     getData();
   }, [alignment]);
 
-  const handleAlignment = (
-    event: React.MouseEvent<HTMLElement>,
-    newAlignment: string | null
-  ) => {
-    setAlignment(newAlignment);
+  const handleAlignment = (event: React.MouseEvent<HTMLElement>) => {
+    setAlignment(event.currentTarget.ariaLabel);
   };
 
   const handleClickOpen = () => {
@@ -147,7 +144,7 @@ export default function Main() {
             >
               <ToggleButton
                 value="allProducts"
-                aria-label="left aligned"
+                aria-label="allProducts"
                 sx={{
                   border: `1px solid ${theme.palette.toggleMenu.border}!important`,
                   borderRadius: '5px !important',
@@ -157,7 +154,7 @@ export default function Main() {
               </ToggleButton>
               <ToggleButton
                 value="men"
-                aria-label="centered"
+                aria-label="men"
                 sx={{
                   border: `1px solid ${theme.palette.toggleMenu.border}!important`,
                   borderRadius: '5px !important',
@@ -167,7 +164,7 @@ export default function Main() {
               </ToggleButton>
               <ToggleButton
                 value="woman"
-                aria-label="right aligned"
+                aria-label="woman"
                 sx={{
                   border: `1px solid ${theme.palette.toggleMenu.border}!important`,
                   borderRadius: '5px !important',
