@@ -57,7 +57,7 @@ export default function Main() {
   useEffect(() => {
     setLoading(true);
     dispatch(fetchProducts() as any).finally(() => setLoading(false));
-  }, [dispatch]);
+  }, []);
 
   const filteredProduct = useMemo(() => {
     if (alignment === 'allProducts') {

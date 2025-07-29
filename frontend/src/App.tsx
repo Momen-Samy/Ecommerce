@@ -1,7 +1,7 @@
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { ColorModeContext, useMode } from './theme';
 import { store } from './store';
-import { Provider, useDispatch } from 'react-redux';
+import { Provider } from 'react-redux';
 
 import Header from './Header/Header';
 import Hero from './Hero/Hero';
