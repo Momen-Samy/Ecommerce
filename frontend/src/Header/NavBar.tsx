@@ -106,7 +106,7 @@ const LinksList = Links.map(({ mainLink, categories }, indx) => (
                     visibility: 'hidden',
                     opacity: '0',
                     ...(indx < 4 ? { left: '100%' } : { right: '100%' }),
-                    top: '30%',
+                    top: '-50%',
                     transition: '0.5s',
                     minWidth: '200px',
                   }}

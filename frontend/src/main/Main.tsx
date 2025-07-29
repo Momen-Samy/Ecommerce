@@ -13,7 +13,7 @@ import {
 } from '@mui/material';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
-import { forwardRef, useEffect, useState } from 'react';
+import { forwardRef, useEffect, useMemo, useState } from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -22,8 +22,10 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { type TransitionProps } from '@mui/material/transitions';
 import { Close } from '@mui/icons-material';
 import ProductDetails from './ProductDetails';
-import { type Product } from '../services/types';
-import supabase from '../services/supabaseClient';
+import { useDispatch, useSelector } from 'react-redux';
+import type { RootState } from '../store';
+import { type ProductStateType } from '../services/ProductSlice';
+import { fetchProducts } from '../services/ProductSlice';
 
 const Transition = forwardRef(function Transition(
   props: TransitionProps & {
@@ -37,41 +39,34 @@ const Transition = forwardRef(function Transition(
 export default function Main() {
   const [alignment, setAlignment] = useState<string | null>('allProducts');
   const [open, setOpen] = useState(false);
-  const [products, setProducts] = useState<any[] | null>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const [clickedProduct, setclickedProduct] = useState<Product>({
-    id: 0,
+  const [clickedProduct, setclickedProduct] = useState<ProductStateType>({
+    id: null,
     product_title: '',
     product_description: '',
-    product_rating: 0,
-    product_price: 0,
-    product_category: 'men',
+    product_rating: null,
+    product_price: null,
+    product_category: '',
     product_images: [],
   });
 
   const theme = useTheme();
+  const dispatch = useDispatch();
+  const ProductsArray = useSelector((state: RootState) => state.products);
 
   useEffect(() => {
-    async function getData() {
-      setLoading(true); // Start loading
+    setLoading(true);
+    dispatch(fetchProducts() as any).finally(() => setLoading(false));
+  }, [dispatch]);
 
-      const { data, error } =
-        alignment === 'allProducts'
-          ? await supabase.from('products').select('*')
-          : await supabase
-              .from('products')
-              .select()
-              .eq('product_category', alignment);
-      if (error) {
-        console.error('Error fetching users:', error.message);
-      } else {
-        setProducts(data);
-      }
-      setLoading(false); // Stop loading
+  const filteredProduct = useMemo(() => {
+    if (alignment === 'allProducts') {
+      return ProductsArray;
     }
-
-    getData();
-  }, [alignment]);
+    return ProductsArray.filter(
+      product => product.product_category === alignment
+    );
+  }, [alignment, ProductsArray]);
 
   const handleAlignment = (event: React.MouseEvent<HTMLElement>) => {
     setAlignment(event.currentTarget.ariaLabel);
@@ -84,12 +79,12 @@ export default function Main() {
   const handleClose = () => {
     setOpen(false);
     setclickedProduct({
-      id: 0,
+      id: null,
       product_title: '',
       product_description: '',
-      product_rating: 0,
-      product_price: 0,
-      product_category: 'men',
+      product_rating: null,
+      product_price: null,
+      product_category: '',
       product_images: [],
     });
   };
@@ -185,8 +180,8 @@ export default function Main() {
             my: '20px',
           }}
         >
-          {products ? (
-            products.map((item: Product) => (
+          {filteredProduct ? (
+            filteredProduct.map(item => (
               <Card
                 key={item.id}
                 sx={{

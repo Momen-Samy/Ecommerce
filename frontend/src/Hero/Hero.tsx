@@ -6,18 +6,24 @@ import WorkspacePremiumOutlinedIcon from '@mui/icons-material/WorkspacePremiumOu
 import AccessAlarmOutlinedIcon from '@mui/icons-material/AccessAlarmOutlined';
 import type { Theme, SxProps } from '@mui/material';
 import SwiperBar from '../components/Swiper';
+interface CaptionProps {
+  title: string;
+  body: string;
+  link: string;
+  sx?: {
+    TitleTypography?: SxProps<Theme>;
+    BodyTypography?: SxProps<Theme>;
+    Link?: SxProps<Theme>;
+  };
+}
+
+const bannersImages = [
+  'https://snqefyrsepicqljivmym.supabase.co/storage/v1/object/public/product-images//Banner(1).jpg',
+  'https://snqefyrsepicqljivmym.supabase.co/storage/v1/object/public/product-images//Banner(2).jpg',
+];
 
 export default function Hero() {
-  interface CaptionProps {
-    title: string;
-    body: string;
-    link: string;
-    sx?: {
-      TitleTypography?: SxProps<Theme>;
-      BodyTypography?: SxProps<Theme>;
-      Link?: SxProps<Theme>;
-    };
-  }
+  const theme = useTheme();
 
   const Caption = ({ title, body, link, sx = {} }: CaptionProps) => {
     const { TitleTypography, BodyTypography, Link: linkSx } = sx;
@@ -25,7 +31,7 @@ export default function Hero() {
       <Box
         sx={{
           position: 'absolute',
-          top: '50%',
+          top: '40%',
           transform: 'translateY(-50%)',
           left: 31,
         }}
@@ -134,8 +140,6 @@ export default function Hero() {
     );
   });
 
-  const theme = useTheme();
-
   return (
     <Box
       sx={{
@@ -169,11 +173,7 @@ export default function Hero() {
                 flexBasis: '50%',
               }}
             >
-              <img
-                src="https://snqefyrsepicqljivmym.supabase.co/storage/v1/object/public/product-images//Banner(1).jpg"
-                alt=""
-                width={'100%'}
-              />
+              <img src={bannersImages[0]} alt="" width={'100%'} />
               <Caption
                 title={'GAMING 4K'}
                 body={'DESKTOPS & LAPTOPS'}
@@ -188,10 +188,7 @@ export default function Hero() {
                 display: 'flex',
               }}
             >
-              <img
-                src="https://snqefyrsepicqljivmym.supabase.co/storage/v1/object/public/product-images//Banner(2).jpg"
-                alt=""
-              />
+              <img src={bannersImages[1]} alt="" />
               <Caption
                 title={'NEW ARRIVALS'}
                 body={'SUMMER SALE 20% OFF'}

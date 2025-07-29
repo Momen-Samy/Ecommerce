@@ -14,16 +14,17 @@ import { Box, Button, Stack, Typography, useTheme } from '@mui/material';
 const mySlider = [
   {
     text: 'MEN',
-    link: 'https://snqefyrsepicqljivmym.supabase.co/storage/v1/object/public/product-images//Swiper(1).jpg',
+    link: 'https://snqefyrsepicqljivmym.supabase.co/storage/v1/object/public/product-images//Swiper(2).jpg',
   },
   {
     text: 'WOMEN',
-    link: 'https://snqefyrsepicqljivmym.supabase.co/storage/v1/object/public/product-images//Swiper(2).jpg',
+    link: 'https://snqefyrsepicqljivmym.supabase.co/storage/v1/object/public/product-images//Swiper(1).jpg',
   },
 ];
 
 export default function SwiperBar() {
   const theme = useTheme();
+
   return (
     <Swiper
       loop={true}

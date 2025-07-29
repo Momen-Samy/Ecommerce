@@ -4,9 +4,9 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 import { useState } from 'react';
 import { Box, Button, CardMedia, Stack, Typography } from '@mui/material';
-import type { Product } from '../services/types';
+import type { ProductStateType } from '../services/ProductSlice';
 type Props = {
-  clickedProduct: Product;
+  clickedProduct: ProductStateType;
 };
 export default function ProductDetails({ clickedProduct }: Props) {
   const [selectedImg, setselectedImg] = useState(0);
